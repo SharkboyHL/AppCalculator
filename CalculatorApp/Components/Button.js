@@ -1,59 +1,58 @@
 import { Dimensions, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 export default ({ onPress, text, size, theme }) => {
-    const estiloBotoes =  [styles.button];
-    const estiloTexto = [styles.text];
+  const buttonStyles = [styles.button];
+  const textStyles = [styles.text];
 
-    if (size === "double") {
-        estiloBotoes.push(styles.botaoDuplo);
-    }
+  if (size === "double") {
+    buttonStyles.push(styles.buttonDouble);
+  }
 
-    if (theme === "secondary") {
-        estiloBotoes.push(styles.botaoSecundario);
-        estiloTexto.push(styles.textoSecundario);
-    } else if (theme === "accent") {
-        estiloBotoes.push(styles.buttonAccent);
-    }
+  if (theme === "secondary") {
+    buttonStyles.push(styles.buttonSecondary);
+    textStyles.push(styles.textSecondary);
+  } else if (theme === "accent") {
+    buttonStyles.push(styles.buttonAccent);
+  }
 
-    return (
-        <TouchableOpacity onPress={onPress} style={estiloBotoes}>
-            <Text style={estiloTexto}>{text}</Text>
-        </TouchableOpacity>
-    );
+  return (
+    <TouchableOpacity onPress={onPress} style={buttonStyles}>
+      <Text style={textStyles}>{text}</Text>
+    </TouchableOpacity>
+  );
 };
 
-const tela = Dimensions.get("janela");
-const botaoLargura = screen.width / 4;
+// set dimmenstion
+const screen = Dimensions.get("window");
+const buttonWidth = screen.width / 4;
 
-const estilos = StyleSheet.create({
-    button: {
-        backgroundColor: "#333333",
-        flex: 1,
-        height: Math.floor(botaoLargura - 10),
-        margin: 5,
-    },
-
-    text: {
-        color: "#fff",
-        fontSize: 24,
-    },
-
-    textoSecundario: {
-        color: "#060606",
-    },
-
-    botaoDuplo: {
-        width: tela.width / 2 - 10,
-        flex: 0,
-        alignItems: "flex-start",
-        paddingLeft: 40,
-    },
-
-    botaoSecundario: {
-        backgroundColor: "#a6a6a6",
-    },
-
-    buttonAccent: {
-        backgroundColor: "#ffc107"
-    },
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: "#333333",
+    flex: 1,
+    height: Math.floor(buttonWidth - 10),
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: Math.floor(buttonWidth),
+    margin: 5,
+  },
+  text: {
+    color: "#fff",
+    fontSize: 24,
+  },
+  textSecondary: {
+    color: "#060606",
+  },
+  buttonDouble: {
+    width: screen.width / 2 - 10,
+    flex: 0,
+    alignItems: "flex-start",
+    paddingLeft: 40,
+  },
+  buttonSecondary: {
+    backgroundColor: "#a6a6a6",
+  },
+  buttonAccent: {
+    backgroundColor: "#ffc107",
+  },
 });
