@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   value: {
     color: "#fff",
-    fontSize: 42,
+    fontSize: 200,
     textAlign: "right",
     marginRight: 20,
     marginBottom: 10,

@@ -42,12 +42,6 @@ const handleEqual = (state) => {
         currentValue: `${previous / current}`,
         ...resetState,
       };
-    case '%': 
-      return {
-        currentValue: `${previous * current}`,
-        ...resetState,
-      }
-      
 
     default:
       return state;
@@ -66,17 +60,8 @@ const calculator = (type, value, state) => {
         currentValue: `${parseFloat(state.currentValue) * -1}`,
       };
     case "percentage":
-      const current = parseFloat(state.currentValue);
-      const previous = parseFloat(state.previousValue || 0);
-
-      const percentageResult = (previous * current) / 100;
-
-      console.log("Resultado da porcentagem:", percentageResult);
-
       return {
-        currentValue: `${percentageResult}`,
-        operator: null,
-        // Manter previousValue inalterado
+        currentValue: `${parseFloat(state.currentValue) * 0.01}`,
       };
     case "operator":
       return {
